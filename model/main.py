@@ -52,6 +52,7 @@ if '__main__' == __name__:
     load_model = torch.load('final_model.pth')
     model = get_model(load_model=load_model)
     input_data = read_from_csv(file=opt.input_file_name)
-    piRNA_max_len = max(input_data.iloc[:, 1].apply(len, 1))
+    #piRNA_max_len = max(input_data.iloc[:, 1].apply(len, 1))
+    piRNA_max_len = 35
     seq = data_preprocessing(data_frame=input_data, have_ans=False, pirna_max_len=piRNA_max_len)
     prediction(model=model, seq=seq, thres=thres)
